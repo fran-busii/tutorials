@@ -11,7 +11,7 @@ class StockPickingInherit(models.Model):
         if self.state in ['draft', 'cancel']:
                 raise UserError(_("The delivery order must not be in draft or cancel state."))
         if 'WH/OUT/' in self.name and self.state not in ['draft', 'cancel']:
-            _logger.info(f"Delivery order  we are looking at: {self.name} with backorder_id: {self.backorder_id.name}")
+            _logger.info(f"Delivery order we are looking at: {self.name} with backorder_id: {self.backorder_id.name}")
             if len(self.move_ids_without_package) != 1:
                 raise UserError(_("The delivery order must have exactly one line."))
                 
